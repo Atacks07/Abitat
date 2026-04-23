@@ -64,6 +64,11 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Supplier.vb" />
+    <Compile Include="Currency.vb" />
+    <Compile Include="Agreement.vb" />
+    <Compile Include="AgreementsStatuses.vb" />
+    <Compile Include="GeneralStatus.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -79,6 +84,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Permission.vb" />
+    <Compile Include="PermissionProfile.vb" />
+    <Compile Include="Profile.vb" />
+    <Compile Include="User.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
