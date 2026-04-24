@@ -1,40 +1,27 @@
-﻿Imports System.Security
+﻿Imports Abitat.Infrastructure
 Imports Abitat.Business.Services.Security
 
 Namespace Pages.Home
 
     Public Class Dashboard
-        Inherits System.Web.UI.Page
+        Inherits AuthenticatedPage
 
         Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
-            ' Guard: must be authenticated
-            If Not SessionHelper.IsAuthenticated Then
-                Response.Redirect("~/Pages/Security/Login.aspx", True)
-                Return
-            End If
-
-            ' Prevent caching of authenticated pages
-            Response.Cache.SetCacheability(HttpCacheability.NoCache)
-            Response.Cache.SetNoStore()
-
             If Not IsPostBack Then
-                BindSessionInfo()
+                BindDashboard()
             End If
         End Sub
 
-        Private Sub BindSessionInfo()
-            litUserName.Text = Server.HtmlEncode(SessionHelper.UserName)
-            litUserName2.Text = Server.HtmlEncode(SessionHelper.UserName)
-            litUserId.Text = SessionHelper.UserId.ToString()
-            litProfileId.Text = SessionHelper.ProfileId.ToString()
+        Private Sub BindDashboard()
+            litUserName.Text = Server.HtmlEncode(CurrentUserName)
+            litUserId.Text = CurrentUserId.ToString()
+            litProfileId.Text = CurrentProfileId.ToString()
 
-            gvPermissions.DataSource = SessionHelper.Permissions
+            Dim perms = SessionHelper.Permissions
+            litPermissionCount.Text = perms.Count.ToString()
+
+            gvPermissions.DataSource = perms
             gvPermissions.DataBind()
-        End Sub
-
-        Protected Sub btnSignOut_Click(sender As Object, e As EventArgs)
-            SessionHelper.SignOut()
-            Response.Redirect("~/Pages/Security/Login.aspx", True)
         End Sub
 
     End Class
