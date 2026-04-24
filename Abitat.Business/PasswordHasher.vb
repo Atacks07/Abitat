@@ -1,7 +1,6 @@
 ﻿Imports BC = BCrypt.Net.BCrypt
 
-Namespace Abitat.Business
-    Public Class PasswordHasher
+Public Class PasswordHasher
 
         Private Const WORK_FACTOR As Integer = 12
 
@@ -27,6 +26,4 @@ Namespace Abitat.Business
             End Try
         End Function
 
-    End Class
-
-End Namespace
+End Class

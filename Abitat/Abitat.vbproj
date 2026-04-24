@@ -93,6 +93,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Pages\Home\Dashboard.aspx" />
+    <Content Include="Pages\Security\Login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +119,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Pages\Home\Dashboard.aspx.designer.vb">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Home\Dashboard.aspx.vb">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Security\Login.aspx.designer.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Security\Login.aspx.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -150,8 +166,21 @@
     <Folder Include="Content\" />
     <Folder Include="Images\" />
     <Folder Include="MasterPages\" />
-    <Folder Include="Pages\" />
     <Folder Include="Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Abitat.Business\Abitat.Business.vbproj">
+      <Project>{9AE07386-C6BE-4D43-9298-A62A348A6C9D}</Project>
+      <Name>Abitat.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Abitat.Data\Abitat.Data.vbproj">
+      <Project>{9A5559C1-14DE-4BF8-BEBD-42BF84073D2A}</Project>
+      <Name>Abitat.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Abitat.Entities\Abitat.Entities.vbproj">
+      <Project>{46C280EB-E750-4E7D-BD42-1755DA28FA71}</Project>
+      <Name>Abitat.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
