@@ -5,7 +5,7 @@ Public Class UserRepository
 
         Public Function GetUser(ByVal userName As String) As User
             Using conn As SqlConnection = Connection.GetConnection()
-            Using cmd As New SqlCommand("dbo.sp_User_GetUser", conn)
+            Using cmd As New SqlCommand("dbo.sp_User_GetByUsername", conn)
                 cmd.CommandType = CommandType.StoredProcedure
                 cmd.Parameters.Add("@UserName", SqlDbType.VarChar, 50).Value = userName
 
@@ -39,7 +39,7 @@ Public Class UserRepository
             Dim list As New List(Of Permission)()
 
             Using conn As SqlConnection = Connection.GetConnection()
-            Using cmd As New SqlCommand("dbo.sp_User_GetPermissionsByUser", conn)
+            Using cmd As New SqlCommand("dbo.sp_User_GetPermissionsByUserId", conn)
                 cmd.CommandType = CommandType.StoredProcedure
                 cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = userId
 
