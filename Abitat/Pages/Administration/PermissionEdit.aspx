@@ -31,8 +31,7 @@
                             Code <span class="text-danger">*</span>
                         </label>
                         <asp:TextBox ID="txtCode" runat="server" CssClass="form-control"
-                                     MaxLength="30" placeholder="e.g. USR_VIEW" />
-                        <div class="form-text">Uppercase letters, numbers, and underscores only. Max 30 characters.</div>
+                                     MaxLength="30" placeholder="e.g. USER_VIEW" />
                         <asp:RequiredFieldValidator runat="server"
                             ControlToValidate="txtCode"
                             ErrorMessage="Code is required."

@@ -10,6 +10,11 @@ Namespace Pages.Administration
         Private ReadOnly _permissionProfileService As New PermissionProfileService()
         Private ReadOnly _profileService As New ProfileService()
 
+        Protected Overrides ReadOnly Property RequiredPermission As String
+            Get
+                Return "PERMISSIONSPROFILES_MANAGE"
+            End Get
+        End Property
         Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
             If Not IsPostBack Then
                 InitializePage()

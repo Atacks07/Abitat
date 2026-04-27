@@ -10,6 +10,11 @@ Namespace Pages.Administration
         Private ReadOnly _permissionService As New PermissionService()
         Private ReadOnly _statusService As New GeneralStatusService()
 
+        Protected Overrides ReadOnly Property RequiredPermission As String
+            Get
+                Return "PERMISSIONS_VIEW"
+            End Get
+        End Property
         Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
             If Not IsPostBack Then
                 LoadStatusDropDown()

@@ -12,6 +12,12 @@ Namespace Pages.Administration
 
         Private Const LIST_URL As String = "~/Pages/Administration/ProfileList.aspx"
 
+        Protected Overrides ReadOnly Property RequiredPermission As String
+            Get
+                Return "PROFILES_MANAGE"
+            End Get
+        End Property
+
         Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
             If Not IsPostBack Then
                 LoadStatusDropDown()
