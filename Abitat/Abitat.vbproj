@@ -33,7 +33,9 @@
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\</OutputPath>
     <DocumentationFile>Abitat.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,7 +45,9 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
     <DocumentationFile>Abitat.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -94,8 +98,20 @@
   <ItemGroup>
     <Content Include="Content\styles.css" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\Administration\ProfileEdit.aspx" />
+    <Content Include="Pages\Administration\ProfileList.aspx" />
+    <Content Include="Pages\Administration\UserEdit.aspx" />
+    <Content Include="Pages\Administration\UserList.aspx" />
+    <Content Include="Pages\Administration\PermissionEdit.aspx" />
+    <Content Include="Pages\Administration\GeneralStatusList.aspx" />
     <Content Include="Pages\Home\Dashboard.aspx" />
+    <Content Include="Pages\Administration\PermissionList.aspx" />
     <Content Include="Pages\Security\Login.aspx" />
+    <None Include="Scripts\jquery-3.7.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.1.js" />
+    <Content Include="Scripts\jquery-3.7.1.min.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -124,11 +140,60 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Pages\Administration\ProfileEdit.aspx.designer.vb">
+      <DependentUpon>ProfileEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Administration\ProfileEdit.aspx.vb">
+      <DependentUpon>ProfileEdit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Administration\ProfileList.aspx.designer.vb">
+      <DependentUpon>ProfileList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Administration\ProfileList.aspx.vb">
+      <DependentUpon>ProfileList.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Administration\UserEdit.aspx.designer.vb">
+      <DependentUpon>UserEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Administration\UserEdit.aspx.vb">
+      <DependentUpon>UserEdit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Administration\UserList.aspx.designer.vb">
+      <DependentUpon>UserList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Administration\UserList.aspx.vb">
+      <DependentUpon>UserList.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Administration\PermissionEdit.aspx.designer.vb">
+      <DependentUpon>PermissionEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Administration\PermissionEdit.aspx.vb">
+      <DependentUpon>PermissionEdit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Administration\GeneralStatusList.aspx.designer.vb">
+      <DependentUpon>GeneralStatusList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Administration\GeneralStatusList.aspx.vb">
+      <DependentUpon>GeneralStatusList.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Pages\Home\Dashboard.aspx.designer.vb">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Home\Dashboard.aspx.vb">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Administration\PermissionList.aspx.designer.vb">
+      <DependentUpon>PermissionList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Administration\PermissionList.aspx.vb">
+      <DependentUpon>PermissionList.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Pages\Security\Login.aspx.designer.vb">
@@ -166,6 +231,8 @@
     </None>
     <None Include="packages.config" />
     <Content Include="Site.Master" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -177,7 +244,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
     <Folder Include="MasterPages\" />
-    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Abitat.Business\Abitat.Business.vbproj">
@@ -204,7 +270,7 @@
     <OptionCompare>Binary</OptionCompare>
   </PropertyGroup>
   <PropertyGroup>
-    <OptionStrict>Off</OptionStrict>
+    <OptionStrict>On</OptionStrict>
   </PropertyGroup>
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>

@@ -1,6 +1,5 @@
-﻿Imports Abitat.Business
-Imports Abitat.Data
-Imports Abitat.Entities
+﻿Imports Abitat.Business.Abitat.Business
+Imports Abitat.Business.Results
 
 Namespace Pages.Security
 

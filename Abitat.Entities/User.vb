@@ -5,7 +5,7 @@
     Public Property ProfileId As Integer
     Public Property GeneralStatusId As Integer
     Public Property Profile As Profile
-    Public Property Status As GeneralStatus
+    Public Property GeneralStatus As GeneralStatus
     Public Property Permissions As List(Of Permission)
 End Class
 

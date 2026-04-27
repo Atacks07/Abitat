@@ -1,71 +1,142 @@
-﻿Imports Abitat.Data
+﻿Imports System.Text.RegularExpressions
+Imports Abitat.Business.Results
+Imports Abitat.Data
 Imports Abitat.Entities
 
-Public Class LoginResult
-    Public Property Success As Boolean
-    Public Property Message As String
-    Public Property AuthenticatedUser As User
-End Class
+Namespace Abitat.Business
+    Public Class UserService
 
-Public Class UserService
+        Private ReadOnly _repository As New UserRepository()
 
-    Private ReadOnly _repository As UserRepository
+        Private Shared ReadOnly UserNamePattern As New Regex("^[a-zA-Z0-9._-]{3,50}$", RegexOptions.Compiled)
 
-    Public Sub New()
-        _repository = New UserRepository()
-    End Sub
+        Private Const BCryptWorkFactor As Integer = 12
 
-    Public Function ValidateLogin(ByVal userName As String, ByVal password As String) As LoginResult
-        Dim result As New LoginResult()
+        Public Function GetAll(Optional search As String = Nothing,
+                               Optional generalStatusId As Integer? = Nothing,
+                               Optional profileId As Integer? = Nothing) As List(Of User)
+            Return _repository.GetAll(search, generalStatusId, profileId)
+        End Function
 
-        If String.IsNullOrWhiteSpace(userName) OrElse String.IsNullOrWhiteSpace(password) Then
-            result.Success = False
-            result.Message = "Username and password are required."
-            Return result
-        End If
+        Public Function GetById(id As Integer) As User
+            If id <= 0 Then
+                Throw New ArgumentException("Invalid user Id.")
+            End If
+            Return _repository.GetById(id)
+        End Function
 
-        Dim repo As New UserRepository()
-        Dim user As User = repo.GetUser(userName)
+        Public Function GetPermissionsByUserId(id As Integer) As User
+            If id <= 0 Then
+                Throw New ArgumentException("Invalid user Id.")
+            End If
+            Return _repository.GetById(id)
+        End Function
 
-        If user Is Nothing Then
-            result.Success = False
-            result.Message = "Invalid credentials."
-            Return result
-        End If
+        Public Function Create(user As User) As Integer
+            Validate(user, isCreate:=True)
 
-        If Not PasswordHasher.Verify(password, user.Password) Then
-            result.Success = False
-            result.Message = "Invalid credentials."
-            Return result
-        End If
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password, BCryptWorkFactor)
 
-        user.Permissions = repo.GetPermissionsByUser(user.Id)
+            Return _repository.Insert(user)
+        End Function
 
-        result.Success = True
-        result.AuthenticatedUser = user
-        Return result
-    End Function
+        Public Sub Update(user As User)
+            If user Is Nothing Then
+                Throw New ArgumentNullException(NameOf(user))
+            End If
+            If user.Id <= 0 Then
+                Throw New ArgumentException("Invalid user Id.")
+            End If
 
-    Public Function CreateUser(ByVal userName As String,
-                               ByVal plainPassword As String,
-                               ByVal profileId As Integer,
-                               ByVal generalStatusId As Integer) As Integer
+            Validate(user, isCreate:=False)
 
-        If String.IsNullOrWhiteSpace(userName) Then
-            Throw New ArgumentException("El nombre de usuario es obligatorio.")
-        End If
-        If String.IsNullOrWhiteSpace(plainPassword) OrElse plainPassword.Length < 8 Then
-            Throw New ArgumentException("La contraseña debe tener al menos 8 caracteres.")
-        End If
+            If Not String.IsNullOrWhiteSpace(user.Password) Then
+                user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password, BCryptWorkFactor)
+            End If
 
-        Dim newUser As New User With {
-            .UserName = userName.Trim(),
-            .Password = PasswordHasher.Hash(plainPassword),
-            .ProfileId = profileId,
-            .GeneralStatusId = generalStatusId
-        }
+            _repository.Update(user)
+        End Sub
 
-        Return _repository.Insert(newUser)
-    End Function
+        Public Sub ChangeStatus(ByVal id As Integer, ByVal newStatusId As Integer)
+            Dim current As User = _repository.GetById(id)
+            If current Is Nothing Then
+                Throw New InvalidOperationException("Permission not found.")
+            End If
+            current.GeneralStatusId = newStatusId
+            _repository.Update(current)
+        End Sub
 
-End Class
+        Private Shared Sub Validate(user As User, isCreate As Boolean)
+            If user Is Nothing Then
+                Throw New ArgumentNullException(NameOf(user))
+            End If
+
+            If String.IsNullOrWhiteSpace(user.UserName) Then
+                Throw New ArgumentException("Username is required.")
+            End If
+            user.UserName = user.UserName.Trim().ToLowerInvariant()
+            If Not UserNamePattern.IsMatch(user.UserName) Then
+                Throw New ArgumentException(
+                    "Username must be 3-50 characters (letters, numbers, dot, dash, underscore).")
+            End If
+
+            If isCreate AndAlso String.IsNullOrWhiteSpace(user.Password) Then
+                Throw New ArgumentException("Password is required.")
+            End If
+
+            If Not String.IsNullOrWhiteSpace(user.Password) Then
+                If user.Password.Length < 8 Then
+                    Throw New ArgumentException("Password must be at least 8 characters.")
+                End If
+            End If
+
+            If user.ProfileId <= 0 Then
+                Throw New ArgumentException("Profile is required.")
+            End If
+
+            If user.GeneralStatusId <= 0 Then
+                Throw New ArgumentException("Status is required.")
+            End If
+        End Sub
+
+        Public Function ValidateLogin(ByVal userName As String,
+                                      ByVal plainPassword As String) As LoginResult
+
+            If String.IsNullOrWhiteSpace(userName) OrElse
+               String.IsNullOrWhiteSpace(plainPassword) Then
+                Return New LoginResult With {
+                    .Success = False,
+                    .Message = "Usuario y contraseña son obligatorios."
+                }
+            End If
+
+            Dim user As User = _repository.GetByUsername(userName.Trim())
+
+            If user Is Nothing Then
+                Return New LoginResult With {
+                    .Success = False,
+                    .Message = "Usuario o contraseña incorrectos."
+                }
+            End If
+
+            If Not PasswordHasher.Verify(plainPassword, user.Password) Then
+                Return New LoginResult With {
+                    .Success = False,
+                    .Message = "Usuario o contraseña incorrectos."
+                }
+            End If
+
+            user.Permissions = _repository.GetPermissionsByUserId(user.Id)
+
+            user.Password = Nothing
+
+            Return New LoginResult With {
+                .Success = True,
+                .Message = "Login correcto.",
+                .AuthenticatedUser = user
+            }
+        End Function
+
+    End Class
+
+End Namespace
