@@ -2,12 +2,14 @@
 
 Namespace Infrastructure
 
-    ''' <summary>
-    ''' Base class for all authenticated pages.
-    ''' Redirects unauthenticated users to Login before rendering.
-    ''' </summary>
     Public Class AuthenticatedPage
         Inherits System.Web.UI.Page
+
+        Protected Overridable ReadOnly Property RequiredPermission As String
+            Get
+                Return Nothing
+            End Get
+        End Property
 
         Protected Overrides Sub OnPreInit(e As EventArgs)
             MyBase.OnPreInit(e)
@@ -16,11 +18,14 @@ Namespace Infrastructure
                 Response.Redirect("~/Pages/Security/Login.aspx", True)
                 Return
             End If
+
+            If Not String.IsNullOrEmpty(RequiredPermission) AndAlso
+               Not SessionHelper.HasPermission(RequiredPermission) Then
+                Response.Redirect("~/Pages/Security/AccessDenied.aspx", True)
+                Return
+            End If
         End Sub
 
-        ''' <summary>
-        ''' Shortcut so pages can call Me.CurrentUserId, Me.CurrentUserName, etc.
-        ''' </summary>
         Protected ReadOnly Property CurrentUserId As Integer
             Get
                 Return SessionHelper.UserId

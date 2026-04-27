@@ -96,6 +96,7 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\access-denied.css" />
     <Content Include="Content\styles.css" />
     <Content Include="Global.asax" />
     <Content Include="Pages\Administration\ProfileEdit.aspx" />
@@ -107,6 +108,7 @@
     <Content Include="Pages\Home\Dashboard.aspx" />
     <Content Include="Pages\Administration\PermissionList.aspx" />
     <Content Include="Pages\Administration\PermissionProfileAssign.aspx" />
+    <Content Include="Pages\Security\AccessDenied.aspx" />
     <Content Include="Pages\Security\Login.aspx" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
@@ -202,6 +204,13 @@
     </Compile>
     <Compile Include="Pages\Administration\PermissionProfileAssign.aspx.vb">
       <DependentUpon>PermissionProfileAssign.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Security\AccessDenied.aspx.designer.vb">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Security\AccessDenied.aspx.vb">
+      <DependentUpon>AccessDenied.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Pages\Security\Login.aspx.designer.vb">

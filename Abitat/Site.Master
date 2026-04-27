@@ -150,10 +150,20 @@
             font-weight: 600;
             color: var(--abitat-primary);
         }
+
+        .sidebar .nav-link.active {
+            background-color: rgba(13, 110, 253, 0.15);
+            color: #0d6efd;
+            font-weight: 600;
+            border-left: 3px solid #0d6efd;
+        }
     </style>
 
     <asp:ContentPlaceHolder ID="phHead" runat="server" />
 </head>
+
+
+
 <body>
     <form id="form1" runat="server">
 
@@ -181,22 +191,35 @@
                 <i class="bi bi-currency-exchange"></i>Currencies
             </a>
 
-            <div class="nav-section">Administration</div>
-            <li class="nav-item">
-                <a class="nav-link" id="A1" runat="server" href="~/Pages/Administration/UserList.aspx">
-                    <i class="bi bi-people-fill me-2"></i>Users
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="A2" runat="server" href="~/Pages/Administration/ProfileList.aspx">
-                    <i class="bi bi-shield-lock me-2"></i>Profiles
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="lnkPermissions" runat="server" href="~/Pages/Administration/PermissionList.aspx">
-                    <i class="bi bi-shield-lock me-2"></i>Permissions
-                </a>
-            </li>
+            <asp:PlaceHolder ID="phAdminSection" runat="server">
+                <div class="nav-section">Administration</div>
+                <asp:PlaceHolder ID="phUsersLink" runat="server">
+                    <li class="nav-item">
+                        <a class="nav-link" id="lnkUsers" runat="server"
+                            href="~/Pages/Administration/UserList.aspx">
+                            <i class="bi bi-people me-2"></i>Users
+                        </a>
+                    </li>
+                </asp:PlaceHolder>
+
+                <asp:PlaceHolder ID="phProfilesLink" runat="server">
+                    <li class="nav-item">
+                        <a class="nav-link" id="lnkProfiles" runat="server"
+                            href="~/Pages/Administration/ProfileList.aspx">
+                            <i class="bi bi-person-badge me-2"></i>Profiles
+                        </a>
+                    </li>
+                </asp:PlaceHolder>
+
+                <asp:PlaceHolder ID="phPermissionsLink" runat="server">
+                    <li class="nav-item">
+                        <a class="nav-link" id="lnkPermissions" runat="server"
+                            href="~/Pages/Administration/PermissionList.aspx">
+                            <i class="bi bi-shield-lock me-2"></i>Permissions
+                        </a>
+                    </li>
+                </asp:PlaceHolder>
+            </asp:PlaceHolder>
         </nav>
 
         <header class="topbar">

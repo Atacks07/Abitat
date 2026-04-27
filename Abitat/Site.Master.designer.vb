@@ -41,22 +41,58 @@ Partial Public Class Site
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''Control A1.
+    '''Control phAdminSection.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents A1 As Global.System.Web.UI.HtmlControls.HtmlAnchor
+    Protected WithEvents phAdminSection As Global.System.Web.UI.WebControls.PlaceHolder
 
     '''<summary>
-    '''Control A2.
+    '''Control phUsersLink.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents A2 As Global.System.Web.UI.HtmlControls.HtmlAnchor
+    Protected WithEvents phUsersLink As Global.System.Web.UI.WebControls.PlaceHolder
+
+    '''<summary>
+    '''Control lnkUsers.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lnkUsers As Global.System.Web.UI.HtmlControls.HtmlAnchor
+
+    '''<summary>
+    '''Control phProfilesLink.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents phProfilesLink As Global.System.Web.UI.WebControls.PlaceHolder
+
+    '''<summary>
+    '''Control lnkProfiles.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lnkProfiles As Global.System.Web.UI.HtmlControls.HtmlAnchor
+
+    '''<summary>
+    '''Control phPermissionsLink.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents phPermissionsLink As Global.System.Web.UI.WebControls.PlaceHolder
 
     '''<summary>
     '''Control lnkPermissions.

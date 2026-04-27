@@ -1,0 +1,81 @@
+﻿body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #ffffff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+}
+
+.card {
+    background: #ffffff;
+    max-width: 420px;
+    margin: auto;
+    padding: 45px 35px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.icon {
+    font-size: 70px;
+    color: #ef4444;
+    margin-bottom: 15px;
+}
+
+h2 {
+    margin: 10px 0;
+    color: #1f2937;
+    font-size: 26px;
+}
+
+h1 {
+    margin: 10px 0;
+    color: #1f2937;
+    font-size: 100px;
+}
+
+p {
+    color: #6b7280;
+    margin-bottom: 30px;
+}
+
+.btn {
+    background: #0052CC;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+    .btn:hover {
+        background: #0052CC;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+    }
+
+    .btn:active {
+        transform: translateY(0);
+    }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
