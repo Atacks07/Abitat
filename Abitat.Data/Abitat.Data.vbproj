@@ -85,6 +85,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Repositories\AgreementStatusRepository.vb" />
+    <Compile Include="Repositories\CurrencyRepository.vb" />
     <Compile Include="Repositories\PermissionRepository.vb" />
     <Compile Include="Repositories\ProfileRepository.vb" />
     <Compile Include="Repositories\GeneralStatusRepository.vb" />

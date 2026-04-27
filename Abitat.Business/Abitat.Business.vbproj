@@ -102,7 +102,9 @@
     </Compile>
     <Compile Include="PasswordHasher.vb" />
     <Compile Include="Results\LoginResult.vb" />
+    <Compile Include="Services\AgreementStatusService.vb" />
     <Compile Include="Services\GeneralStatusService.vb" />
+    <Compile Include="Services\CurrencyService.vb" />
     <Compile Include="Services\ProfileService.vb" />
     <Compile Include="Services\PermissionService.vb" />
     <Compile Include="Services\PermissionProfileService.vb" />

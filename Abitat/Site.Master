@@ -187,9 +187,24 @@
             <a class="nav-link" href="#">
                 <i class="bi bi-people"></i>Suppliers
             </a>
-            <a class="nav-link" href="#">
-                <i class="bi bi-currency-exchange"></i>Currencies
-            </a>
+
+            <asp:PlaceHolder ID="phCurrencysLink" runat="server">
+                <li class="nav-item">
+                    <a class="nav-link" id="A1" runat="server"
+                        href="~/Pages/Administration/CurrencyList.aspx">
+                        <i class="bi bi-currency-exchange"></i>Currencies
+                    </a>
+                </li>
+            </asp:PlaceHolder>
+
+            <asp:PlaceHolder ID="phAgreementsStatusesLink" runat="server">
+                <li class="nav-item">
+                    <a class="nav-link" id="A2" runat="server"
+                        href="~/Pages/Administration/AgreementStatusList.aspx">
+                        <i class="bi bi-card-checklist"></i>Agreements Statuses
+                    </a>
+                </li>
+            </asp:PlaceHolder>
 
             <asp:PlaceHolder ID="phAdminSection" runat="server">
                 <div class="nav-section">Administration</div>

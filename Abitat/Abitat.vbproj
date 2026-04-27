@@ -99,7 +99,11 @@
     <Content Include="Content\access-denied.css" />
     <Content Include="Content\styles.css" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\Administration\AgreementStatusEdit.aspx" />
+    <Content Include="Pages\Administration\CurrencyEdit.aspx" />
+    <Content Include="Pages\Administration\AgreementStatusList.aspx" />
     <Content Include="Pages\Administration\ProfileEdit.aspx" />
+    <Content Include="Pages\Administration\CurrencyList.aspx" />
     <Content Include="Pages\Administration\ProfileList.aspx" />
     <Content Include="Pages\Administration\UserEdit.aspx" />
     <Content Include="Pages\Administration\UserList.aspx" />
@@ -143,11 +147,39 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Pages\Administration\AgreementStatusEdit.aspx.designer.vb">
+      <DependentUpon>AgreementStatusEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Administration\AgreementStatusEdit.aspx.vb">
+      <DependentUpon>AgreementStatusEdit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Administration\CurrencyEdit.aspx.designer.vb">
+      <DependentUpon>CurrencyEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Administration\CurrencyEdit.aspx.vb">
+      <DependentUpon>CurrencyEdit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Administration\AgreementStatusList.aspx.designer.vb">
+      <DependentUpon>AgreementStatusList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Administration\AgreementStatusList.aspx.vb">
+      <DependentUpon>AgreementStatusList.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Pages\Administration\ProfileEdit.aspx.designer.vb">
       <DependentUpon>ProfileEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Administration\ProfileEdit.aspx.vb">
       <DependentUpon>ProfileEdit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Administration\CurrencyList.aspx.designer.vb">
+      <DependentUpon>CurrencyList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Administration\CurrencyList.aspx.vb">
+      <DependentUpon>CurrencyList.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Pages\Administration\ProfileList.aspx.designer.vb">

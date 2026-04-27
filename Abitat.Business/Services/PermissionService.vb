@@ -47,31 +47,31 @@ Namespace Abitat.Business
 
         Private Shared ReadOnly CodePattern As New Regex("^[A-Z0-9_]+$", RegexOptions.Compiled)
 
-        Private Shared Sub Validate(ByVal p As Permission)
-            If p Is Nothing Then
-                Throw New ArgumentNullException(NameOf(p))
+        Private Shared Sub Validate(ByVal permission As Permission)
+            If permission Is Nothing Then
+                Throw New ArgumentNullException(NameOf(permission))
             End If
 
-            If String.IsNullOrWhiteSpace(p.Code) Then
+            If String.IsNullOrWhiteSpace(permission.Code) Then
                 Throw New ArgumentException("Code is required.")
             End If
-            p.Code = p.Code.Trim().ToUpperInvariant()
-            If p.Code.Length > 30 Then
+            permission.Code = permission.Code.Trim().ToUpperInvariant()
+            If permission.Code.Length > 30 Then
                 Throw New ArgumentException("Code cannot exceed 30 characters.")
             End If
-            If Not CodePattern.IsMatch(p.Code) Then
+            If Not CodePattern.IsMatch(permission.Code) Then
                 Throw New ArgumentException("Code can only contain uppercase letters, numbers, and underscores.")
             End If
 
-            If String.IsNullOrWhiteSpace(p.Name) Then
+            If String.IsNullOrWhiteSpace(permission.Name) Then
                 Throw New ArgumentException("Name is required.")
             End If
-            p.Name = p.Name.Trim()
-            If p.Name.Length > 100 Then
+            permission.Name = permission.Name.Trim()
+            If permission.Name.Length > 100 Then
                 Throw New ArgumentException("Name cannot exceed 100 characters.")
             End If
 
-            If p.GeneralStatusId <= 0 Then
+            If permission.GeneralStatusId <= 0 Then
                 Throw New ArgumentException("Status is required.")
             End If
         End Sub

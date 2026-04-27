@@ -47,20 +47,20 @@ Namespace Abitat.Business
 
         Private Shared ReadOnly CodePattern As New Regex("^[A-Z0-9_]+$", RegexOptions.Compiled)
 
-        Private Shared Sub Validate(ByVal p As Profile)
-            If p Is Nothing Then
-                Throw New ArgumentNullException(NameOf(p))
+        Private Shared Sub Validate(ByVal profile As Profile)
+            If profile Is Nothing Then
+                Throw New ArgumentNullException(NameOf(profile))
             End If
 
-            If String.IsNullOrWhiteSpace(p.Name) Then
+            If String.IsNullOrWhiteSpace(profile.Name) Then
                 Throw New ArgumentException("Name is required.")
             End If
-            p.Name = p.Name.Trim()
-            If p.Name.Length > 100 Then
+            profile.Name = profile.Name.Trim()
+            If profile.Name.Length > 100 Then
                 Throw New ArgumentException("Name cannot exceed 50 characters.")
             End If
 
-            If p.GeneralStatusId <= 0 Then
+            If profile.GeneralStatusId <= 0 Then
                 Throw New ArgumentException("Status is required.")
             End If
         End Sub
