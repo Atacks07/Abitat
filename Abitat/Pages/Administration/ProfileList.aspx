@@ -75,6 +75,13 @@
                                 CommandArgument='<%# Eval("Id") %>'
                                 CausesValidation="false"
                                 OnClientClick="return confirm('Change the status of this profile?');" />
+                            <asp:LinkButton ID="btnPermissions" runat="server"
+                                CommandName="ManagePermissions"
+                                CommandArgument='<%# Eval("Id") %>'
+                                CssClass="btn btn-sm btn-outline-info"
+                                CausesValidation="false">
+                            <i class="bi bi-shield-lock"></i> Permissions
+</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

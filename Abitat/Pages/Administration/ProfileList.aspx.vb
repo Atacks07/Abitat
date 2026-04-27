@@ -75,6 +75,8 @@ Namespace Pages.Administration
                     Catch ex As Exception
                         ShowMessage("Error: " & ex.Message, False)
                     End Try
+                Case "ManagePermissions"
+                    Response.Redirect("~/Pages/Administration/PermissionProfileAssign.aspx?profileId=" & id, False)
             End Select
         End Sub
 

@@ -85,10 +85,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Repositories\PermissionProfileRepository.vb" />
+    <Compile Include="Repositories\PermissionRepository.vb" />
     <Compile Include="Repositories\ProfileRepository.vb" />
     <Compile Include="Repositories\GeneralStatusRepository.vb" />
-    <Compile Include="Repositories\PermissionRepository.vb" />
+    <Compile Include="Repositories\PermissionProfileRepository.vb" />
     <Compile Include="Repositories\UserRepository.vb" />
   </ItemGroup>
   <ItemGroup>

@@ -88,7 +88,7 @@ Namespace Pages.Administration
                     perm.Id = CInt(hfId.Value)
                     _permissionService.Update(perm)
                 Else
-                    _permissionService.Create(perm)
+                    _permissionService.Insert(perm)
                 End If
 
                 Response.Redirect(LIST_URL, False)

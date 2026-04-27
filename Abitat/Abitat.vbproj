@@ -106,6 +106,7 @@
     <Content Include="Pages\Administration\GeneralStatusList.aspx" />
     <Content Include="Pages\Home\Dashboard.aspx" />
     <Content Include="Pages\Administration\PermissionList.aspx" />
+    <Content Include="Pages\Administration\PermissionProfileAssign.aspx" />
     <Content Include="Pages\Security\Login.aspx" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
@@ -194,6 +195,13 @@
     </Compile>
     <Compile Include="Pages\Administration\PermissionList.aspx.vb">
       <DependentUpon>PermissionList.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Administration\PermissionProfileAssign.aspx.designer.vb">
+      <DependentUpon>PermissionProfileAssign.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Administration\PermissionProfileAssign.aspx.vb">
+      <DependentUpon>PermissionProfileAssign.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Pages\Security\Login.aspx.designer.vb">

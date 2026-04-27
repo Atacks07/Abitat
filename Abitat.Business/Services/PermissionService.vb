@@ -24,7 +24,7 @@ Namespace Abitat.Business
             Return _repository.GetById(id)
         End Function
 
-        Public Function Create(ByVal permission As Permission) As Integer
+        Public Function Insert(ByVal permission As Permission) As Integer
             Validate(permission)
             Return _repository.Insert(permission)
         End Function

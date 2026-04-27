@@ -105,6 +105,7 @@
     <Compile Include="Services\GeneralStatusService.vb" />
     <Compile Include="Services\ProfileService.vb" />
     <Compile Include="Services\PermissionService.vb" />
+    <Compile Include="Services\PermissionProfileService.vb" />
     <Compile Include="Services\Security\SessionHelper.vb" />
     <Compile Include="Services\UserService.vb" />
   </ItemGroup>
